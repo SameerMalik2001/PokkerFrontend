@@ -4,7 +4,7 @@ let socket: Socket;
 
 export const getSocket = (): Socket => {
   if (!socket) {
-    socket = io('wws://pokkerbackend.onrender.com', {
+    socket = io('https://pokkerbackend.onrender.com', {
       transports: ['websocket'],
       reconnection: true,
     });
