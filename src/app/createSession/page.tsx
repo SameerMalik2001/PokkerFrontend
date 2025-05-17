@@ -6,6 +6,7 @@ import Head from '../components/Head';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import { useSocket } from '@/context/Socket.context';
+import { toast } from '@/hooks/use-toast';
 
 const page = () => {
   const route = useRouter()
@@ -29,10 +30,10 @@ const page = () => {
         // console.log(data?.roomId, data?.status, data?.msg);
         if (data?.status === 200) {
           route.push(`/${roomNameRef.current}`)
-          alert(data?.msg)
+          toast({ description: data?.msg })
         }
         if (data?.status === 400) {
-          alert(data?.msg)
+          toast({ description: data?.msg,variant: "destructive", })
         }
       })
     }
@@ -88,7 +89,7 @@ const page = () => {
           </form>
           <div className='w-full  mt-2 flex justify-center'>
             <Link href={`/joinSession`}>
-              <p className=' cursor-pointer hover:text-gray-400'>Join Room</p>
+              <p onClick={() => route.push(`/joinSession`)} className=' cursor-pointer hover:text-gray-400'>Join Room</p>
             </Link>
           </div>
         </div>

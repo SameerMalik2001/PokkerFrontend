@@ -1,4 +1,5 @@
 'use client'
+import { toast } from '@/hooks/use-toast'
 import { getSocket } from '@/lib/Socket'
 import { useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
@@ -14,12 +15,12 @@ const JoiningSessionRoute = ({ children }: { children: ReactNode }) => {
     if (socket && typeof window !== 'undefined') {
       socket.on('join', (data: any) => {
         if (data?.status === 200) {
-          alert(data?.msg)
+          toast({description: data?.msg})
           setLetIn(true)
         }
         if (data?.status === 400) {
           route.push(`/createSession`)
-          alert(data?.msg)
+          toast({description: data?.msg, variant: 'destructive'})
         }
       })
     }

@@ -2,16 +2,24 @@
 import { useSocket } from '@/context/Socket.context'
 import React, { useEffect, useState } from 'react'
 
-const ShowCards = ({roomId}:any) => {
+const ShowCards = ({ roomId, data }: any) => {
   const valueOfCard = ["0", "1", "2", "3", "5", "8", "13", "21", "34", "55", "89", "?"]
   const [selectedCard, setSelectedCard] = useState("")
 
+  console.log(data);
+
   const socket = useSocket()
+
+  const resetMessage = () => {
+    setSelectedCard("")
+  }
 
   useEffect(() => {
     if (!socket || !roomId) return;
-
-    socket.emit('message', selectedCard);
+    socket.on('resetMessage', resetMessage)
+    if (selectedCard) {
+      socket.emit('message', selectedCard);
+    }
   }, [selectedCard])
 
   return (

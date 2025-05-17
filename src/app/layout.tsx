@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SocketProvider } from "../context/Socket.context";
+import { Toaster } from "@/components/ui/toaster";
 
 const customFont = localFont({
   src: "../../public/Big_Shoulders_Stencil/static/BigShouldersStencil_18pt-Bold.ttf",
@@ -32,6 +33,7 @@ export default function RootLayout({
             enableSystem
           >
             <SocketProvider>
+              <Toaster />
               {children}
             </SocketProvider>
           </ThemeProvider>

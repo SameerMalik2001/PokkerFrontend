@@ -19,8 +19,8 @@ const ShowData = ({ data }: any) => {
       {
         data?.map((item: any, index: number) => {
           return <div key={item?.name} className={cn(`p-1 gap-3 text-8xl border-foreground border-[2px] rounded-lg flex justify-center items-center flex-col`, cardSizeClass)}>
-            <div className='h-[70%]  w-[95%] flex justify-center items-center rounded-lg bg-foreground text-background'>
-              <p style={{ rotate: `${(index * 40) % 360}deg` }} className='animate-spinSlow'>{item?.score === -1 ? "🤔" : item?.score}</p>
+            <div className='h-[70%]  w-[95%] flex justify-center items-center rounded-lg bg-foreground text-background 🤔'> 
+              <p style={{ rotate: item?.score === '' ? `${(index * 40) % 360}deg`:'0deg' }} className={item?.score === '' ? 'animate-spinSlow' : ''}>{item?.score !== "" ? item?.score : item?.isSelected ? "👍" : "🤔"}</p>
             </div>
             <div className='text-xl capitalize break-all px-2'>
               {item?.username}
