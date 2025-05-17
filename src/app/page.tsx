@@ -6,11 +6,9 @@ export default function Home() {
 
 
   return (
-    <NonProtectedRoute>
-      <div className="min-h-screen flex-col max-w-screen bg-background text-foreground">
-        <Head />
-        <LandingPageBody />
-      </div>
-    </NonProtectedRoute>
+    <div className="min-h-screen flex-col max-w-screen bg-background text-foreground">
+      <Head />
+      <LandingPageBody />
+    </div>
   );
 }
