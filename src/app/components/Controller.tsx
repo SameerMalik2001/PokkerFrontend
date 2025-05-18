@@ -71,7 +71,7 @@ const Controller = ({ roomId, setIsReveil, setData }: any) => {
 
   return (
     <div className='w-full min-h-fit m-3 flex justify-center items-center gap-3'>
-      <Button onClick={() => route.push('/createSession')} className='bg-red-700 text-white hover:bg-red-600'>Exit</Button>
+      <Button onClick={() => window.location.href = '/createSession'}  className='bg-red-700 text-white hover:bg-red-600'>Exit</Button>
       {
         isLoaded && user && user?.username === ownerUserName &&
         <>

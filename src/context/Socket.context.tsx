@@ -1,5 +1,5 @@
 'use client';
-import { disconnectSocket, getSocket } from '@/lib/Socket';
+import { getSocket } from '@/lib/Socket';
 import { usePathname } from 'next/navigation';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Socket } from 'socket.io-client';
@@ -18,13 +18,6 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
       socketInstance.disconnect();
     };
   }, []);
-
-  useEffect(() => {
-    const excluded =  ['createSession', 'joinSession', '']
-    if(path && excluded.includes(path)) {
-      disconnectSocket()
-    }
-  }, [path])
 
   return (
     <SocketContext.Provider value={socket}>

@@ -11,9 +11,3 @@ export const getSocket = (): Socket => {
   }
   return socket;
 };
-
-export const disconnectSocket = (): void => {
-  if (socket && socket.connected) {
-    socket.disconnect();
-  }
-};
